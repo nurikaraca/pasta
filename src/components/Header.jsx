@@ -1,62 +1,50 @@
 import Link from "next/link";
-import React from "react";
-import { Caveat, Roboto } from "next/font/google";
-import Image from "next/image";
-import SearchBar from "./SearchBar";
-
-const caveat = Caveat({
-  weight: "600",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const roboto = Roboto({
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-});
+import { FaUser } from "react-icons/fa";
+import CartButton from "./CartButton";
 
 const Header = () => {
   return (
-    <div
-       className={` top-5 p-4 absolute z-[100] w-full h-15  text-base  md:text-lg lg:text-xl xl:text-2xl flex items-center justify-between border-b-2 border-[#F5F5DC] ${roboto.className}  `}
+    <header
+      className="fixed left-0 top-0 z-50 w-full border-b border-white/15 bg-stone-950/75 text-sm text-white shadow-lg backdrop-blur-md md:text-base"
     >
-      {/* LOGO */}
-      <div className="flex-[1] xl:text-5xl lg:text-3xl md:text-xl sm:text-sm  pl-2  ">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between lg:px-8">
         <Link
           href="/"
-          className={`  flex items-center justify-center sm:w-[60px] sm:h-[60px] md:w-[70px] md:h-[70px] lg:w-[100px] lg:h-[100px]  xl:w-[140px] xl:h-[140px] border-[#F5F5DC] border  rounded-full mx-auto ${caveat.className}  `}
+          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-white/50 bg-white/10 text-2xl font-black tracking-tight shadow-sm transition hover:bg-white/20 md:h-16 md:w-16 md:text-3xl"
         >
           PASTA
         </Link>
+
+        <nav className="flex flex-1 items-center gap-2 overflow-x-auto md:justify-center md:gap-4">
+          <Link href="/" className="rounded-full px-4 py-2 transition hover:bg-white/15">
+            Ana Sayfa
+          </Link>
+          <Link
+            href="/?category=pasta"
+            className="rounded-full px-4 py-2 transition hover:bg-white/15"
+          >
+            Pasta
+          </Link>
+          <Link
+            href="/?category=vegetarian"
+            className="rounded-full px-4 py-2 transition hover:bg-white/15"
+          >
+            Vejetaryen
+          </Link>
+        </nav>
+
+        <div className="flex items-center justify-end gap-3">
+          <button
+            type="button"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 text-sm font-semibold text-white transition hover:bg-white/25"
+          >
+            <FaUser className="text-xs" />
+            Sign in
+          </button>
+          <CartButton />
+        </div>
       </div>
-
-      {/* LINKS */}
-
-      <nav className="pl-4 flex gap-8 items-center flex-[2] h-full ">
-        <Link href="/" className="transition-all ease-in-out  hover:scale-110  ">
-          Home
-        </Link>
-
-        <Link
-          href="/pasta"
-          className="transition-all ease-in-out  hover:scale-110"
-        >
-          Pasta
-        </Link>
-
-        <Link
-          href="/vegetarian"
-          className="transition-all ease-in-out  hover:scale-110"
-        >
-          Vegetarian
-        </Link>
-      </nav>
-
-     <div className=" flex-[2]">
-     <SearchBar/>
-     </div>
-    </div>
+    </header>
   );
 };
 

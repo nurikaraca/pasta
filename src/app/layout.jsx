@@ -1,21 +1,27 @@
 import "./globals.css";
 import Header from "../components/Header.jsx";
+import { CartProvider } from "@/context/CartContext";
+
+export const metadata = {
+  title: "Pasta Menu",
+  description: "Taze makarna menüsü ve ürün detayları.",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
-        />
-      </head>
+    <html lang="tr">
       <body>
-        <div className="">
-          <Header />
-
-          <main>{children}</main>
-        </div>
+        <CartProvider>
+          <div>
+            <Header />
+            <main>{children}</main>
+          </div>
+        </CartProvider>
       </body>
     </html>
   );

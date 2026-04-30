@@ -3,26 +3,30 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafaf9;
+  --foreground: #1c1917;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0e0a0a;
-    --foreground: #ededed;
+    --background: #fafaf9;
+    --foreground: #1c1917;
   }
 }
 
-li{
-  @apply transition-all ease-in-out  hover:scale-110
+* {
+  box-sizing: border-box;
 }
 
 body {
-  box-sizing: border-box;
   color: var(--foreground);
-  background-image: url('/images/bg.jpg');
+  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 
